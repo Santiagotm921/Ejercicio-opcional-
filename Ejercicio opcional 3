@@ -1,0 +1,121 @@
+// posición del sol
+let solx, soly;
+
+// posición Mercurio
+let mercuriox, mercurioy;
+let distancia, angulo;
+
+//posicion Venus
+let venusx,venusy;
+
+//posicion Tierra
+let tierrax,tierray;
+
+//posicion Marte
+let martex,martey;
+
+//posicion Jupiter
+let jupiterx,jupitery;
+
+//posicion Saturno
+let saturnox,saturnoy;
+
+//posicion Urano
+let uranox,uranoy;
+
+//posicion Neptuno
+let neptunox,neptunoy;
+
+function settings(){
+  size(500,500);
+}
+
+function setup(){
+  solx = width/2;
+  soly = height/2;
+  distancia = 100.0;
+  angulo = PI/2;
+  
+}
+
+function draw(){
+  // dibujar el fondo
+  background(0);
+  
+  // dibujar el sol
+  fill(255,255,0);
+  ellipse(solx, soly, 60, 60);
+  
+  // calcular la posición de mercurio
+  mercuriox = solx + cos(angulo/40) * distancia/2;
+  mercurioy = soly + sin(angulo/40) * distancia/2;
+  // dibujar Mercurio
+  fill(215,215,215);
+  ellipse(mercuriox, mercurioy, 10, 10); 
+  angulo+= PI/8;
+
+// calcular la posición de venus
+ venusx = solx + cos(angulo/35) * distancia/1.2;
+  venusy = soly + sin(angulo/35) * distancia/1.2;
+ // dibujar venus
+  fill(250,250,0);
+  ellipse(venusx, venusy, 15, 15); 
+  angulo+= PI/8;
+
+// calcular la posición de tierra
+ tierrax = solx + cos(angulo/25) * distancia*1.3;
+  tierray = soly + sin(angulo/25) * distancia*1.3;
+ // dibujar tierra
+  fill(0,0,255);
+  ellipse(tierrax, tierray, 20, 20); 
+  angulo+= PI/8;
+
+// calcular la posición de marte
+ martex = solx + cos(angulo/40) * distancia*1.6;
+  martey = soly + sin(angulo/40) * distancia*1.6;
+ // dibujar marte
+  fill(255,0,0);
+  ellipse(martex, martey, 30, 30); 
+  angulo+= PI/8;
+  
+  // calcular la posición de jupiter
+ jupiterx = solx + cos(angulo/45) * distancia*2;
+  jupitery = soly + sin(angulo/45) * distancia*2;
+ // dibujar jupiter
+  fill(176,122,78);
+  ellipse(jupiterx, jupitery, 60, 60); 
+  angulo+= PI/8;
+  
+   // calcular la posición de saturno
+ saturnox = solx + cos(angulo/60) * distancia*2.6;
+  saturnoy = soly + sin(angulo/60) * distancia*2.6;
+ // dibujar jupiter
+  fill(230,210,154);
+  ellipse(saturnox, saturnoy, 40, 40); 
+  angulo+= PI/8;
+  //Anillo de saturno
+   saturnox = solx + cos(angulo/60) * distancia*2.6;
+  saturnoy = soly + sin(angulo/60) * distancia*2.6;
+ // dibujar jupiter
+  fill(230,210,154);
+  ellipse(saturnox, saturnoy, 70, 10); 
+  angulo+= PI/8;
+  
+   // calcular la posición de urano
+ uranox = solx + cos(angulo/70) * distancia*3;
+  uranoy = soly + sin(angulo/70) * distancia*3;
+ // dibujar jupiter
+  fill(0,255,255);
+  ellipse(uranox, uranoy, 30, 30); 
+  angulo+= PI/8;
+
+// calcular la posición de Neptuno
+ neptunox = solx + cos(angulo/80) * distancia*3.5;
+  neptunoy = soly + sin(angulo/80) * distancia*3.5;
+ // dibujar jupiter
+  fill(10,100,190);
+  ellipse(neptunox, neptunoy, 25, 25); 
+  angulo+= PI/8;
+
+
+}
