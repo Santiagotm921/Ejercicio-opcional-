@@ -1,0 +1,149 @@
+let logo;
+let starkLogo;
+let lannisterLogo;
+let baratheonLogo;
+let targaryenLogo;
+let nightKing;
+let starkPos;
+let lannisterPos;
+let baratheonPos;
+let targaryenPos;
+let pantalla;
+let seleccion;
+let seleccionPos;
+
+function setup() {
+	createCanvas(windowWidth, 700);
+
+logo = loadImage("logo.png");
+	starkLogo = loadImage("stark.png");
+	lannisterLogo = loadImage("lannister.png");
+	baratheonLogo = loadImage("baratheon.png");
+	targaryenLogo = loadImage("targaryen.png");
+	nightKing = loadImage("night-king.jpg");
+	
+
+	starkPos = width / 5;
+	lannisterPos = 2 * width / 5;
+	baratheonPos = 3 * width / 5;
+	targaryenPos = 4 * width / 5;
+	seleccionPos = width/2;
+	
+	
+	pantalla = 0;
+	seleccion = 0;
+	imageMode(CENTER); 
+}
+
+function draw() {
+	background(0);
+	
+
+	switch (pantalla) {
+		case 0:
+		
+			image(starkLogo, starkPos, 250);
+			image(lannisterLogo, lannisterPos, 250);
+			image(baratheonLogo, baratheonPos, 250);
+			image(targaryenLogo, targaryenPos, 250);
+			
+			
+			rectMode(CENTER);
+			noFill();
+			stroke(255);
+		
+			switch(seleccion) {
+				case 1:
+					rect(starkPos, 250, 200, 256);
+					break;
+				case 2:
+					rect(lannisterPos, 250, 200, 256);
+					break;
+				case 3:
+					rect(baratheonPos, 250, 200, 256);
+					break;
+				case 4:
+					rect(targaryenPos, 250, 200, 256);
+			}
+			
+			break;
+		case 1:
+			// pantalla de juego
+			
+			switch(seleccion) {
+				case 1:
+					image(starkLogo, seleccionPos, 250);
+					break;
+				case 2:
+					image(lannisterLogo, seleccionPos, 250);
+					break;
+				case 3:
+					image(baratheonLogo, seleccionPos, 250);
+					break;
+				case 4:
+					image(targaryenLogo, seleccionPos, 250);
+					break;
+			}
+			
+		
+			break;
+		case 2:
+			// pantalla de error
+			
+			imageMode(CENTER);
+			image(nightKing, width / 2, height / 2);
+			textAlign(CENTER);
+			text("No Seleccionaste ninguna casa", width/2, 50);
+			text("Game Over", width/2, 100);
+		
+			break;
+	}	
+	image(logo, width / 2, 600);
+}
+
+function mousePressed(){
+
+	if (pantalla == 0) {
+		
+		//  stark
+		if (mouseX >= starkPos - 128 && mouseX <= starkPos + 128 && mouseY >= 250 - 128 && mouseY <= 250 + 128) {
+			seleccion = 1;}
+			
+		//  lannister
+		if (mouseX >= lannisterPos - 128 && mouseX <= lannisterPos + 128 && mouseY >= 250 - 128 && mouseY <= 250 + 128) {
+			seleccion = 2;}
+			
+		//  baratheon
+		if (mouseX >= baratheonPos - 128 && mouseX <= baratheonPos + 128 && mouseX >= 250 - 128 && mouseY <= 250 + 128) {
+			seleccion = 3;}
+			
+		//  targaryen
+		if (mouseX >= targaryenPos - 128 && mouseX <= targaryenPos + 128 && mouseX >= 250 - 128 && mouseY <= 250 + 128) {
+			seleccion = 4;}
+		
+		if (mouseY >= 500) {
+			
+				if (seleccion != 0) {
+					pantalla = 1;
+				}else {
+					pantalla = 2;
+				}
+	}}else{if (mouseY >= 500) {
+				// recordar devolver todo a su valor inicial
+				pantalla = 0;
+				seleccion = 0;}}}
+
+function keyPressed(){
+	
+	if (pantalla == 1) {
+		
+			switch(keyCode) {
+				case RIGHT_ARROW:
+					// mover escudo a la derecha
+					seleccionPos +=5;
+					break;
+				case LEFT_ARROW:
+					// mover escudo a la izquierda
+					seleccionPos -=5;
+					break;
+			}}}
